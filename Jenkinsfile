@@ -15,6 +15,7 @@ pipeline {
                 sh "ansible --version"
                 sh "ansible-playbook --version"
                 sh "ansible-galaxy --version"
+                sh "ansible-galaxy collection install -r requirements.yml"
             }
         }
     }
