@@ -15,7 +15,7 @@ pipeline {
                 sh "ansible --version"
                 sh "ansible-playbook --version"
                 sh "ansible-galaxy --version"
-                sh "ansible-playbook -i list.host --private-key=$ANSIBLE_KEY playbook.yml"
+                sh "playbook -i list.host --private-key=$ANSIBLE_KEY playbook.yml"
             }
         }
     }
