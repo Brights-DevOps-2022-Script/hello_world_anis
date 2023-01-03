@@ -16,7 +16,7 @@ pipeline {
                 sh "ansible-playbook --version"
                 sh "ansible-galaxy --version"
                 sh "ansible-galaxy collection install -r requirements.yml"
-                sh "ansible-playbook -i hostfile --private-key=$ANSIBLE_KEY playbook.yml"
+                sh "ansible-playbook -i list.host --private-key=$ANSIBLE_KEY playbook.yml"
             }
         }
     }
