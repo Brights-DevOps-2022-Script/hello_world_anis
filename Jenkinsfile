@@ -15,7 +15,6 @@ pipeline {
                 sh "ansible --version"
                 sh "ansible-playbook --version"
                 sh "ansible-galaxy --version"
-                sh 'Congratulaiton it works...'
             }
         }
     }
