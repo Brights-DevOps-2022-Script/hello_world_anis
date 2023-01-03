@@ -15,7 +15,7 @@ pipeline {
                 sh "which ansible || true"
                 sh "ansible --version"
                 sh "ansible-playbook --version"
-                sh "ansible-playbook -i hostfile --private-key=$ANSIBLE_KEY playbook.yml"
+                sh "ansible-playbook -i hostfile --private-key=$ANSIBLE_KEY --ssh-common-args='-o StrictHostKeyChecking=no' playbook.yml"
             }
         }
     }
