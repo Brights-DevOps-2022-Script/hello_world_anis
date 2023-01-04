@@ -6,16 +6,16 @@ pipeline {
     }
     environment {
     ANSIBLE_KEY = credentials('209493f6-a90b-413d-aa6a-64511ca45eab')
-    ANSIBLE_HOST_KEY_CHECKING = "False"
+     ANSIBLE_HOST_KEY_CHECKING = 'False'
     }
     stages {
         stage('build') {
             steps {
-                sh 'echo building ...'
-                sh "which ansible || true"
+                sh 'apk update'
+                sh 'apk add --update --no-cache openssh sshpass'
                 sh "ansible --version"
                 sh "ansible-playbook --version"
-                sh "ansible-playbook -i hostfile --private-key=$ANSIBLE_KEY --ssh-common-args='-o StrictHostKeyChecking=no' playbook.yml"
+                sh "ansible-playbook -vvv -i hostfile playbook.yml -e ansible_ssh_pass=$ANSIBLE_KEY_PSW"
             }
         }
     }
