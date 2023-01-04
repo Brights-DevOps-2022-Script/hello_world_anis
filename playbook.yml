@@ -1,8 +1,8 @@
-- name: Playbook
-  hosts: VM
-  become: yes
+- hosts: vm
+  ignore_unreachable: true
   tasks:
-    - name: Copy file
-      ansible.builtin.copy:
-        src: hostfile.txt
-        dest: /home/jenkins
+    - name: creating a empty file
+      file:
+        path: "/home/cherry/anistest.txt"
+        state: touch
+        owner: cherry
