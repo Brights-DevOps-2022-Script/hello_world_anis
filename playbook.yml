@@ -54,8 +54,13 @@
       ansible.builtin.docker_container:
         name: hello-world
         image: hello-world
-        state: started
-        restart_policy: always
+        state: started.
+        
+    - name: check if hello-world container was started
+      ansible.builtin.shell: docker ps | grep hello-world
+      register: container
+      failed_when: container.stderr != ''
+      changed_when: false
 
     - name: print message
       ansible.builtin.debug:
