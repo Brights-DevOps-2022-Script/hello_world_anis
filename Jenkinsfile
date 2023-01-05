@@ -22,7 +22,7 @@ pipeline {
 
         stage('test') {
             steps {
-                sh "ansible -m shell -a 'docker --version' cheery"
+                sh "ansible -i hostfile -m shell -a 'docker --version' -e ansible_ssh_pass=$ANSIBLE_KEY_PSW"
             }
         }
     }
