@@ -17,7 +17,7 @@ pipeline {
                 sh "ansible-playbook --version"
                 sh "ansible-galaxy --version"
                 sh "ansible-playbook -i hostfile d-playbook.yml -e ansible_ssh_pass=$ANSIBLE_KEY_PSW"
-                sh "ansible -i 20.218.243.211 -m shell -a 'docker --version'"
+                sh "ansible -i hostfile -m shell -a 'docker --version'"
             }
         }
     }
