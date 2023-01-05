@@ -19,5 +19,5 @@
       changed_when: false
 
     - name: check docker Version
-      ansible.builtin.shell: docker --version
+      ansible.builtin.shell: echo "docker --version"
       register: docker
