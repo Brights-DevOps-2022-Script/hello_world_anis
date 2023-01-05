@@ -64,7 +64,5 @@
   - name: Run a docker command
     ansible.builtin.shell: docker --version
     register: result
-    
-  - name: Show the docker command
-    debug: 
-      var: result.stdout
+    failed_when: hello.stderr != ''
+    changed_when: false    
