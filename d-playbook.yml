@@ -12,6 +12,8 @@
         state: latest
         update_cache: true
 
-    - name: Check if Docker is installed
-      shell: docker --version
-      register: result
+    - name: check if docker is installed
+      ansible.builtin.shell: dpkg -l | grep -E 'docker-ce|docker-ce-cli|containerd.io|docker-compose-plugin'
+      register: docker
+      failed_when: docker.stderr != ''
+      changed_when: false
