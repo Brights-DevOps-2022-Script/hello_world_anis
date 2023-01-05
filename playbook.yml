@@ -50,13 +50,13 @@
         groups: docker
         append: true
 
-    - name: run hello-world container #run hello-world container for testing. check after on vm if it was running with 'docker ps -a'
-      ansible.builtin.docker_container:
+    - name: run hello-world container 
         name: hello-world
         image: hello-world
         state: started
+        msg: "container running....."
         restart_policy: always
 
-    - name: print Hello-world message
+    - name: print message
       ansible.builtin.debug:
        msg: "Congratultion,container running....."    
