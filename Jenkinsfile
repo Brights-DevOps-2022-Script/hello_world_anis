@@ -22,7 +22,7 @@ pipeline {
 
         stage('test') {
             steps {
-                sh "ansible -m shell -a 'docker --version' hostfile"
+                sh "ansible -m shell -a 'docker --version' cheery"
             }
         }
     }
