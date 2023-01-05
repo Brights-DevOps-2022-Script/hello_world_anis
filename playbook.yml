@@ -55,7 +55,6 @@
         name: hello-world
         image: hello-world
         state: started
-        msg: "container running....."
         restart_policy: always
 
     - name: print message
