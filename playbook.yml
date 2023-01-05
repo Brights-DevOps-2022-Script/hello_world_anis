@@ -19,7 +19,7 @@
       register: certificates
       failed_when: certificates.stderr != ''
       changed_when: false
-
+      
     - name: add Docker GPG signing key
       ansible.builtin.apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
@@ -40,11 +40,10 @@
         state: latest
         update_cache: true
 
-    - name: check if docker is installed
-      ansible.builtin.shell: docker --version
-      register: container
-      failed_when: docker.stderr != ''
-      changed_when: false
+    - name: checks if Docker is running
+      ansible.builtin.service:
+        name: docker
+        state: started
 
     - name: create docker group #can be removed because docker group is automatically created when installing docker. or leave it to be sure a docker group is created
       ansible.builtin.group:
