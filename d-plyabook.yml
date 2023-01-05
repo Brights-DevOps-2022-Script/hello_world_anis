@@ -2,14 +2,12 @@
 - hosts: all
   become: true
   tasks:
-    - name: install dependecies
+    - name: install Docker
       ansible.builtin.apt:
         name:
-          - apt-transport-https
-          - ca-certificates
-          - curl
-          - gnupg2
-          - lsb-release
-          - software-properties-common
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-compose-plugin
         state: latest
         update_cache: true
