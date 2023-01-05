@@ -16,7 +16,7 @@ pipeline {
                 sh "ansible --version"
                 sh "ansible-playbook --version"
                 sh "ansible-galaxy --version"
-                sh "ansible-playbook -i hostfile playbook.yml -e ansible_ssh_pass=$ANSIBLE_KEY_PSW"
+                sh "ansible-playbook -i hostfile test-playbook.yml -e ansible_ssh_pass=$ANSIBLE_KEY_PSW"
             }
         }
     }

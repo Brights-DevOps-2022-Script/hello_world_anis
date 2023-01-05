@@ -21,7 +21,7 @@
 
     - name: add Docker Repository
       ansible.builtin.apt_repository:
-        repo: deb https://download.docker.com/linux/ubuntu bionic stable #bionic is for ubuntu 18.04 what is running on our VM
+        repo: deb https://download.docker.com/linux/ubuntu bionic stable #bionic is for ubuntu 18.04 which is running on our Virtual machine
         state: present
 
     - name: install Docker
