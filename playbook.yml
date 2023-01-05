@@ -59,4 +59,12 @@
 
     - name: print message
       ansible.builtin.debug:
-       msg: "Congratultion,container running....."    
+       msg: "Congratultion,container running....."   
+       
+  - name: Run a docker command
+    ansible.builtin.shell: docker --version
+    register: result
+    
+  - name: Show the docker command
+    debug: 
+      var: result.stdout
