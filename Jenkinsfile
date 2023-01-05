@@ -22,7 +22,6 @@ pipeline {
 
         stage('test') {
             steps {
-                sh 'docker --version'
                 sh "ansible -i 20.218.243.211 -m shell -a 'docker --version'"
             }
         }
