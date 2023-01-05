@@ -19,11 +19,5 @@ pipeline {
                 sh "ansible-playbook -i hostfile d-playbook.yml -e ansible_ssh_pass=$ANSIBLE_KEY_PSW"
             }
         }
-
-        stage('test') {
-            steps {
-                sh "ansible -i hostfile -m shell -a 'docker --version' -e ansible_ssh_pass=$ANSIBLE_KEY_PSW"
-            }
-        }
     }
 }
