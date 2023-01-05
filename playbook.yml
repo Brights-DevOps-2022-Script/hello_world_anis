@@ -14,6 +14,12 @@
         state: latest
         update_cache: true
 
+    - name: check if dependencies are installed
+      ansible.builtin.shell: dpkg -l 'ca-certificates' && dpkg -l 'curl' &&  dpkg -l 'gnupg' && dpkg -l 'lsb-release'
+      register: certificates
+      failed_when: certificates.stderr != ''
+      changed_when: false
+      
     - name: add Docker GPG signing key
       ansible.builtin.apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
@@ -54,15 +60,10 @@
       ansible.builtin.docker_container:
         name: hello-world
         image: hello-world
-        state: started.
-        
-    - name: check if hello-world container was started
-      ansible.builtin.shell: docker ps | grep hello-world
-      register: container
-      failed_when: container.stderr != ''
-      changed_when: false
+        state: started
+        restart_policy: always
 
     - name: print message
       ansible.builtin.debug:
        msg: "Congratultion,container running....."   
-      
+       
