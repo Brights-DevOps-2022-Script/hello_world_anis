@@ -11,3 +11,7 @@
           - docker-compose-plugin
         state: latest
         update_cache: true
+
+    - name: Check if Docker is installed
+      shell: docker --version
+      register: result
