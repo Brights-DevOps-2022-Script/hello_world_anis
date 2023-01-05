@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Pull the Docker image
+    docker_image:
+      name: mdanisulhoquekhan/python-imdb
+      source: registry
+  - name: Run the Docker container
+    docker_container:
+      name: python-imdb
+      image: mdanisulhoquekhan/python-imdb
+      state: started
+      published_ports:
+      - "80:80"
