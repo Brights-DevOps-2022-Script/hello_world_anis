@@ -55,3 +55,8 @@
         name: hello-world
         image: hello-world
         state: started
+        restart_policy: always
+
+    - name: print Hello-world message
+      ansible.builtin.debug:
+      msg: "Hello-world container is running."    
