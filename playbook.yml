@@ -60,9 +60,4 @@
     - name: print message
       ansible.builtin.debug:
        msg: "Congratultion,container running....."   
-       
-  - name: Run a docker command
-    ansible.builtin.shell: docker --version
-    register: result
-    failed_when: hello.stderr != ''
-    changed_when: false    
+      
