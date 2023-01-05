@@ -51,6 +51,7 @@
         append: true
 
     - name: run hello-world container 
+      ansible.builtin.docker_container:
         name: hello-world
         image: hello-world
         state: started
