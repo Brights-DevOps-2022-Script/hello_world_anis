@@ -2,14 +2,7 @@
 - hosts: all
   become: true
   tasks:
-    - name: install dependecies
-      ansible.builtin.apt:
-        name:
-          - apt-transport-https
-          - ca-certificates
-          - curl
-          - gnupg2
-          - lsb-release
-          - software-properties-common
-        state: latest
-        update_cache: true
+    - name: add Docker GPG signing key
+      ansible.builtin.apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
