@@ -1,5 +1,5 @@
 pipeline {
-    agent {
+/*     agent {
         docker {
             image 'devops2022.azurecr.io/alpine-simon'
             args '--entrypoint='
@@ -14,7 +14,13 @@ pipeline {
     dockerimagename = "devops2022.azurecr.io/alpine-simon"
     dockerImage = ""
 
-    }
+    } */
+    environment {
+    dockerimagename = "devops2022.azurecr.io/alpine-test"
+    dockerImage = ""
+  }
+
+  agent any
     stages {
        stage('build') {
             steps {
