@@ -25,6 +25,7 @@ pipeline {
        stage('build') {
             steps {
                 dockerImage = docker.build dockerimagename
+                sh 'echo docekerImage'
        
            }
         }
