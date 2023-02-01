@@ -2,19 +2,23 @@ pipeline {
     agent {
         docker {
             // image 'cytopia/ansible'
-            image 'gcr.io/cloud-builders/kubectl'
+            image 'devops2022.azurecr.io/alpine-simon'
+            args '--entrypoint='
+            args '--user root --privileges'
         }
     }
     environment {
     // ANSIBLE_KEY = credentials('ansible_VM')
     // ANSIBLE_HOST_KEY_CHECKING = 'False'
-        ACRCreds = credentials('acr_creds')
-        KUBECONFIG = credentials('k8s_config')
+    KUBECONFIG = credentials('k8s_config')  
+    ACR_CREDS = credentials('acr_creds')
+
     }
     stages {
        stage('build') {
             steps {
-               sh 'docker build . '               
+                sh "docker login -u $ACR_CREDS_USR -p $ACR_CREDS_PSW devops2022.azurecr.io"
+                sh "docker build ."          
            }
         }
         stage('deploy') {
