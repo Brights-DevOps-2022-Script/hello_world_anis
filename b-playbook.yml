@@ -1,8 +1,0 @@
----
-- hosts: all
-  become: true
-  tasks:
-    - name: add Docker GPG signing key
-      ansible.builtin.apt_key:
-        url: https://download.docker.com/linux/ubuntu/gpg
-        state: present

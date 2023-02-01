@@ -12,18 +12,13 @@ pipeline {
         KUBECONFIG = credentials('k8s_config')
     }
     stages {
-//        stage('build') {
-//            steps {
-//                sh 'apk update'
-//                sh 'apk add --update --no-cache openssh sshpass'
-//                sh "ansible --version"
-//                sh "ansible-playbook --version"
-//              sh "ansible-galaxy --version"
-//               // sh "ansible-playbook -i hostfile playbook.yml -e ansible_ssh_pass=$ANSIBLE_KEY_PSW"
-//                sh "ansible-playbook -i hostfile jenkins-playbook.yml -e ansible_ssh_pass=$ANSIBLE_KEY_PSW"
-//            }
-//        }
-        stage('Testing kubectl') {
+       stage('build') {
+            steps {
+               sh 'docker --version'
+               sh 'docker build'               
+           }
+        }
+        stage('deploy') {
             steps {
                 script {
                     sh 'kubectl apply -f nginx-namespace.yaml'
