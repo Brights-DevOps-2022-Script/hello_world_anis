@@ -21,14 +21,15 @@ pipeline {
   }
 
   agent any
+
     stages {
-       stage('build') {
-            steps {
-                dockerImage = docker.build dockerimagename
-                sh 'echo docekerImage'
-       
-           }
+    stage('Build image') {
+      steps{
+        script {
+          dockerImage = docker.build dockerimagename
         }
+      }
+     }
         stage('deploy') {
             steps {
                 script {
