@@ -3,7 +3,6 @@ pipeline {
         docker {
             image 'devops2022.azurecr.io/alpine-simon'
             args '--entrypoint='
-            args '-v /var/run/docker.sock'
             args '--user root --privileged'
         }
     }
