@@ -16,7 +16,7 @@ pipeline {
 
     } */
     environment {
-    dockerimagename = "devops2022.azurecr.io/alpine-test"
+    dockerimagename = "devops2022.azurecr.io/alpine-simo"
     dockerImage = ""
   }
 
