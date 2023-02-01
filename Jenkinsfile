@@ -1,10 +1,10 @@
 pipeline {
     agent {
         docker {
-            // image 'cytopia/ansible'
             image 'devops2022.azurecr.io/alpine-simon'
             args '--entrypoint='
-            args '--user root --privileges'
+            args '-v /var/run/docker.sock'
+            args '--user root --privileged'
         }
     }
     environment {
