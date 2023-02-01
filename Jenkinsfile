@@ -29,5 +29,6 @@ pipeline {
                     sh 'kubectl apply -f nginx-namespace.yaml'
                 }
             }
+          }
     }
 }
