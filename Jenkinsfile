@@ -11,13 +11,15 @@ pipeline {
     // ANSIBLE_HOST_KEY_CHECKING = 'False'
     KUBECONFIG = credentials('k8s_config')  
     ACR_CREDS = credentials('acr_creds')
+    dockerimagename = "devops2022.azurecr.io/alpine-simon"
+    dockerImage = ""
 
     }
     stages {
        stage('build') {
             steps {
-                sh "docker login -u $ACR_CREDS_USR -p $ACR_CREDS_PSW devops2022.azurecr.io"
-                sh "docker build ."          
+                sh "docker.build dockerimagename"
+       
            }
         }
         stage('deploy') {
