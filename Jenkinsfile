@@ -38,7 +38,7 @@ pipeline {
             steps {
                 
                sh "kubectl --kubeconfig=$KUBECONFIG apply -f nginxServiceDeploy.yml -n namespaceanis"
-               sh "kubectl set image -n namespacanis deployment/nginx-deployment nginx=devops2022.azurecr.io/nginxanis:$GIT_COMMIT"
+               sh "kubectl set image -n namespaceanis deployment/nginx-deployment nginx=devops2022.azurecr.io/nginxanis:$GIT_COMMIT"
                
             }
         }
