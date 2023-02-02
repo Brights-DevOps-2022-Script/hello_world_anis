@@ -42,5 +42,22 @@ pipeline {
                
             }
         }
+          stage('get LoadBalancer IP'){
+            agent {
+                docker {
+                    image 'devops2022.azurecr.io/ubuntu-k8s-curl'
+                }
+            }
+            environment {
+                KUBECONFIG = credentials('k8s_config') 
+             }
+            steps{
+              steps {
+                sh '''
+                IP_ADDRESS=$(curl -s devops2022.azurecr.io/nginxanis:$GIT_COMMIT)
+                echo "Load-Balanced IP Address: $IP_ADDRESS"
+                '''
+            }
+            }
     }
 }
