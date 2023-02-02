@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: devops2022.azurecr.io/nginx:anisv1
+        image: devops2022.azurecr.io/nginxtim:${GIT_COMMIT}
         ports:
         - containerPort: 80
 ---

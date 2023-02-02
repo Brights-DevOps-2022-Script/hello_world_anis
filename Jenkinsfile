@@ -1,41 +1,46 @@
 pipeline {
-/*     agent {
-        docker {
-            image 'devops2022.azurecr.io/alpine-simon'
-            args '--entrypoint='
-            args '--user root --privileged'
-        }
-    }
+    agent any
     environment {
-    // ANSIBLE_KEY = credentials('ansible_VM')
-    // ANSIBLE_HOST_KEY_CHECKING = 'False'
     KUBECONFIG = credentials('k8s_config')  
     ACR_CREDS = credentials('acr_creds')
-    dockerimagename = "devops2022.azurecr.io/alpine-simon"
-    dockerImage = ""
 
-    } */
-    environment {
-    dockerimagename = "devops2022.azurecr.io/alpine-simo"
-    dockerImage = ""
-  }
-
-  agent any
-
+    }
     stages {
-    stage('Build image') {
-      steps{
-        script {
-          sh "docker.build dockerimagename"
-        }
-      }
-     }
-        stage('deploy') {
+        stage('build') {
+            agent any
             steps {
-                script {
-                    sh 'kubectl apply -f nginx-namespace.yaml'
-                }
+                sh "docker build -t devops2022.azurecr.io/nginxanis:$GIT_COMMIT ."
             }
-          }
+        }
+        stage('push') {
+            agent any
+            steps {
+                sh "docker login -u $ACR_CREDS_USR -p $ACR_CREDS_PSW devops2022.azurecr.io"
+                sh "docker push devops2022.azurecr.io/nginxanis:$GIT_COMMIT"
+            }
+        }
+        stage('remove from VM') {
+            agent any
+            steps {
+                sh "docker rmi devops2022.azurecr.io/nginxanis:$GIT_COMMIT"
+            }
+        }
+         stage('deploy') {
+            agent {
+                docker {
+                    image 'devops2022.azurecr.io/timtest'
+                    args '--entrypoint='
+                 }
+            }
+             environment {
+                KUBECONFIG = credentials('k8s_config') 
+             }
+            steps {
+                
+               sh "kubectl --kubeconfig=$KUBECONFIG apply -f nginxServiceDeploy.yml -n namespaceanis"
+               sh "kubectl set image -n namespacanis deployment/nginx-deployment nginx=devops2022.azurecr.io/nginxanis:$GIT_COMMIT"
+               
+            }
+        }
     }
 }
