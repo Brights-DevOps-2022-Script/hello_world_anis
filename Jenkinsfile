@@ -45,19 +45,18 @@ pipeline {
           stage('get LoadBalancer IP'){
             agent {
                 docker {
-                    image 'devops2022.azurecr.io/ubuntu-k8s-curl'
+                    image 'alpine/k8s:1.23.16'
                 }
             }
             environment {
                 KUBECONFIG = credentials('k8s_config') 
              }
             steps{
-              steps {
-                sh '''
-                IP_ADDRESS=$(curl -s devops2022.azurecr.io/nginxanis:$GIT_COMMIT)
-                echo "Load-Balanced IP Address: $IP_ADDRESS"
-                '''
-            }
+              script {
+                    def output = sh(script: 'kubectl get service -n namespaceanis', returnStdout: true)
+                    def externalIp = output.split("\n")[1].split()[3]
+                    echo "External IP: ${externalIp}"
+                }
             }
    }
  }
