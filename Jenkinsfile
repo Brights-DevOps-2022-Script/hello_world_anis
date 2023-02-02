@@ -54,9 +54,10 @@ pipeline {
             steps{
               script {
                     def output = sh(script: 'kubectl get service -n namespaceanis', returnStdout: true)
-                    def externalIp = output.split("\n")[1].split()[3]
+                    env.externalIp = output.split("\n")[1].split()[3].toString()
                     echo "External IP: ${externalIp}"
                 }
+                sh "curl -s ${env.externalIp}"
             }
    }
  }
