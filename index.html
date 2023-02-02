@@ -4,74 +4,41 @@
     <meta charset="UTF-8" />
     <title>JS + CSS Clock</title>
     <style>
-     *{
-    margin: 0;
-    padding: 0;
-    font-family:sans-serif;
-}
-
-.content{
-    width: 100%;
-    position: absolute;
-    top: 25%;
-    transform: translate(-0%);
+    
+.landing {
+    height: calc(100vh - 50px);
+    min-height: 390px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    color: #fff;
-}
-.content h1 {
-    font-size: 70px;
-    margin-top: 80px;
+    background-image: url('https://github.com/ElzeroWebSchool/HTML_And_CSS_Template_One/blob/main/images/landing.jpg?raw=true');
+    background-size: cover;
+    padding: 0px 20px;
 }
 
-.content p{
-    margin: 20px auto;
-    font-weight: 100;
-    line-height: 25px;
+.landing h1 {
+    color:var(--main_color);
+    font-size: 50px;
 }
 
-button {
-    width: 200px;
-    padding: 15px 0;
-    text-align: center;
-    margin: 20px 10px;
-    border-radius: 25px;
-    font-weight: bold;
-    border: 2px solid #ff5d06;
-    background: transparent;
-    color: #fff;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+.landing p {
+    font-size: 20px;
+    line-height: 2;
+    word-spacing: 2px;
 }
 
-span {
-    background:#ff5d06;
-    height: 100%;
-    width: 0%;
-    border-radius: 25px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    transition: 0.5s;
-}
-
-button:hover span{
-    width: 100%;
-}
     </style>
   </head>
   <body>
-    <div class="banner">
-      <div class="content">
-          <h1>Welcome to berlin From Team 5</h1>
-          <p>Thanks your for visiting our page. We are team 5(Anis, Tim, Halim) </p>
-          <div>
-              <button type="button"><span></span>Contact us </button>
-              <button type="button"><span></span>SUBSCRIBE our page</button>
-          </div>
+    <div class="landing">
+      <div>
+        <h1>Hello There!</h1>
+        <p>
+          We are Team 5 [Tim, Anis, Halim] - Super Creative &<br />
+          Problem solver
+        </p>
       </div>
-  </div>
     </div>
   </body>
 </html>
