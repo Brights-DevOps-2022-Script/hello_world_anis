@@ -42,7 +42,7 @@ kind: Kustomization
 resources:
   - nginx.yml
 images:
-  - name: SIMON-NGINX
+  - name: ANIS-NGINX
     newName: devops2022.azurecr.io/nginxanis:${GIT_COMMIT}' > anis-argocd/kustomization.yml
                     """)
                     sh("git add anis-argocd/kustomization.yml")
