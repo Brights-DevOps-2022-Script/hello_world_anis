@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - nginx.yml
 images:
-  - name: SIMON-NGINX
+  - name: ANIS-NGINX
     newName: devops2022.azurecr.io/nginxanis:c9fbbe02aedb709e3622d14281d7ff5f22735a65
