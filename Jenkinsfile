@@ -1,91 +1,73 @@
 pipeline {
-    agent any
-    environment {
-    KUBECONFIG = credentials('k8s_config')  
-    ACR_CREDS = credentials('acr_creds')
-
-    }
+    agent any 
     stages {
-        stage('build') {
-            agent any
+        stage('CHECK [CI SKIP]') {
             steps {
+                script {
+                    if (sh(script: "git log -1 --pretty=%B | fgrep -ie '[skip ci]' -e '[ci skip]'", returnStatus: true) == 0) {
+                        currentBuild.result = 'NOT_BUILT'
+                        error "Aborting because commit message contains [skip ci]"
+                    }
+                }
+            }
+        }
+        stage('BUILD + PUSH DOCKER IMAGE') {
+            steps {
+                withDockerRegistry(credentialsId: 'acr_creds', url: 'https://devops2022.azurecr.io/v2/') {
                 sh "docker build -t devops2022.azurecr.io/nginxanis:$GIT_COMMIT ."
-            }
-        }
-        stage('push') {
-            agent any
-            steps {
-                sh "docker login -u $ACR_CREDS_USR -p $ACR_CREDS_PSW devops2022.azurecr.io"
                 sh "docker push devops2022.azurecr.io/nginxanis:$GIT_COMMIT"
-            }
-        }
-        stage('remove from VM') {
-            agent any
-            steps {
                 sh "docker rmi devops2022.azurecr.io/nginxanis:$GIT_COMMIT"
+                }
             }
         }
-         stage('deploy') {
-            agent {
-                docker {
-                    image 'devops2022.azurecr.io/timtest'
-                    args '--entrypoint='
-                 }
-            }
-             environment {
-                KUBECONFIG = credentials('k8s_config') 
-             }
+        stage('TEST DOCKER IMAGE') {
             steps {
-                
-               sh "kubectl --kubeconfig=$KUBECONFIG apply -f nginxServiceDeploy.yaml -n namespaceanis"
-               sh "kubectl set image -n namespaceanis deployment/nginx-deployment nginx=devops2022.azurecr.io/nginxanis:$GIT_COMMIT"
-               
-            }
-        }
-          stage('get LoadBalancer IP'){
-            agent {
-                docker {
-                    image 'alpine/k8s:1.23.16'
+                 script {
+                    def imageTag = "nginxanis:$GIT_COMMIT"
+                    def acrLoginServer = "devops2022.azurecr.io"
+                    def imageExists = sh(script: "set +x curl -fL ${acrLoginServer}/v2/manifests/${imageTag}", returnStatus: true) == 0
+                    if (!imageExists) {
+                        error("The image ${imageTag} was not found in the registry ${acrLoginServer}")
+                    }
                 }
             }
-            environment {
-                KUBECONFIG = credentials('k8s_config') 
-             }
-            steps{
-              script {
-                    def output = sh(script: 'kubectl get service -n namespaceanis', returnStdout: true)
-                    env.externalIp = output.split("\n")[1].split()[3].toString()
-                    echo "External IP: ${externalIp}"
+        }
+        stage('DEPLOY DEPLOYMENT FILE') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '2eb747c4-f19f-4601-ab83-359462e62482',  url: 'https://github.com/Brights-DevOps-2022-Script/argocd.git']]])
+                withCredentials([usernamePassword(credentialsId: '2eb747c4-f19f-4601-ab83-359462e62482', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    sh("""
+                      echo 'apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - nginx.yml
+images:
+  - name: SIMON-NGINX
+    newName: devops2022.azurecr.io/nginxanis:${GIT_COMMIT}' > anis-argocd/kustomization.yml
+                    """)
+                    sh("git add anis-argocd/kustomization.yml")
+                    sh("git commit -m 'kustom [skip ci]'")
+                    sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/argocd.git HEAD:main")
                 }
-                sh "curl -s ${env.externalIp}"
             }
-   }
-stage('commit an push to github') {
-          agent{
-                docker {
-                    image 'bitnami/git'
+        }
+        stage('DEPLOY DEPLOYMENT FILE2') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'MessageExclusion', excludedMessage: '.*\\[skip ci\\].*']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '2eb747c4-f19f-4601-ab83-359462e62482',  url: 'https://github.com/Brights-DevOps-2022-Script/hello_world_anis.git']]])
+                withCredentials([usernamePassword(credentialsId: '2eb747c4-f19f-4601-ab83-359462e62482', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    sh("""
+                        echo 'apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - nginx.yml
+images:
+  - name: ANIS-NGINX
+    newName: devops2022.azurecr.io/nginxanis:${GIT_COMMIT}' > kustomization.yml
+                    """)
+                    sh("git add kustomization.yml")
+                    sh("git commit -m 'kustomization [skip ci]'")
+                    sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/hello_world_anis.git HEAD:main")
                 }
-        }
-        environment {
-          GITCONFIG = credentials('2eb747c4-f19f-4601-ab83-359462e62482')
-        }
-           steps('Commit changes') {
-                //sh 'rm -r test'
-                sh 'pwd'
-                sh 'git clone https://github.com/Brights-DevOps-2022-Script/hello_world_anis.git'
-                sh'git branch -a'
-                sh 'cd hello_world_anis'
-                sh 'pwd'
-                sh 'echo hallo >> test.txt'
-                //sh 'git remote add origin https://github.com/Brights-DevOps-2022-Script/felix-agent'
-                sh 'git add test.txt'
-                sh 'git commit -m "Add test.txt file"'
-                sh'git branch -a'
-/*                 sh 'git branch -M main'
-                sh 'git remote add origin https://github.com/fschultes/test.git' */
-                //checkout scm
-                //sh 'git checkout -b rubarb'
-               // sh 'git push -u origin main'
             }
         }
     }
