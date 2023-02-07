@@ -41,24 +41,5 @@ images:
                 }
             }
         }
-        stage('DEPLOY DEPLOYMENT FILE2') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'MessageExclusion', excludedMessage: '.*\\[skip ci\\].*']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '2eb747c4-f19f-4601-ab83-359462e62482',  url: 'https://github.com/Brights-DevOps-2022-Script/hello_world_anis.git']]])
-                withCredentials([usernamePassword(credentialsId: '2eb747c4-f19f-4601-ab83-359462e62482', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                    sh("""
-                        echo 'apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
-  - nginx.yml
-images:
-  - name: ANIS-NGINX
-    newName: devops2022.azurecr.io/nginxanis:${GIT_COMMIT}' > kustomization.yml
-                    """)
-                    sh("git add kustomization.yml")
-                    sh("git commit -m 'kustomization [skip ci]'")
-                    sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/hello_world_anis.git HEAD:main")
-                }
-            }
-        }
     }
 }
