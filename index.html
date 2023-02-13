@@ -1,217 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Project Test!</title>
-    <style>
-    body {
-  background-color: #232323;
-  margin: 0;
-  font-family: "Montserrat", "Avenir";
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+     <script src="https://kit.fontawesome.com/b0f29e9bfe.js" crossorigin="anonymous"></script>
+     <style>
+        /* General */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-#container {
-  margin: 20px auto;
-  max-width: 600px;
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    background-color: #dac400;
 }
 
-.square {
-  width: 30%;
-  background: purple;
-  padding-bottom: 30%;
-  float: left;
-  margin: 1.66%;
-  border-radius: 15%;
-  transition: background 0.6s;
-  -webkit-transition: background 0.6s;
-  -moz-transition: background 0.6s;
-}
-
-h1 {
-  text-align: center;
-  line-height: 1.1;
-  font-weight: normal;
-  color: white;
-  background: steelblue;
-  margin: 0;
-  text-transform: uppercase;
-  padding: 20px 0;
-}
-
-#colorDisplay {
-  font-size: 200%;
-}
-
-#message {
-  display: inline-block;
-  width: 20%;
-}
-
-#stripe {
-  background: white;
-  height: 30px;
-  text-align: center;
-  color: black;
-}
-
-.selected {
-  color: white;
-  background: steelblue;
-}
-
+/* Button */
 button {
-  border: none;
-  background: none;
-  text-transform: uppercase;
-  height: 100%;
-  font-weight: 700;
-  color: steelblue;
-  letter-spacing: 1px;
-  font-size: inherit;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  outline: none;
+    border: none;
+    background-color: transparent;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.5s;
 }
 
-button:hover {
-  color: white;
-  background: steelblue;
+button:focus {
+    outline: none;
 }
-.footer {
-  color: #fff;
-  position: fixed;
-  bottom: 0;
-}
-    </style>
-  </head>
-  <body>
-    <h1>The Great<br /><span id="colorDisplay">RGB!</span><br />Color Game</h1>
 
-    <div id="stripe">
-      <button id="reset">New Colors</button>
-      <span id="message"></span>
-      <button class="mode">Easy</button>
-      <button class="mode selected">Hard</button>
+button:hover i {
+    color: rgb(102, 102, 102);
+}
+
+i {
+    color: gray;
+    font-size: 4em;
+}
+
+/* Book */
+.book {
+    width: 350px;
+    height: 500px;
+    position: relative;
+    transition: transform 0.5s;
+}
+
+.paper {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    perspective: 1500px;
+}
+
+.front {
+    backface-visibility: hidden;
+    border-left: 3px solid #dac400;
+}
+
+.front, 
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.front {
+    z-index: 1;
+}
+
+.back {
+    z-index: 0;
+}
+
+.front-content,
+.back-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-content {
+    transform: rotateY(180deg)
+}
+
+/* Paper Flipped */
+.flipped .front,
+.flipped .back {
+    transform: rotateY(-180deg)
+}
+
+/* Paper Z-index */
+#p1 {
+    z-index: 3;
+}
+
+#p2 {
+    z-index: 2;
+}
+
+#p3 {
+    z-index: 1;
+}
+
+/* Customization */
+
+.book-title {
+    font-size: 3em;
+    margin-bottom: 40px;
+}
+
+.cover-img {
+    width: 200px;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+#b1 {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    justify-content: space-around;
+}
+
+#b1 h2 {
+    font-size: 2em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#b1 p {
+    margin-bottom: 20px;
+}
+
+
+     </style>
+</head>
+<body>
+    <button id="prev-btn">
+        <i class="fas fa-arrow-circle-left"></i>
+    </button>
+
+    <!-- The Book -->
+    <div id="book" class="book">
+        <!-- Paper 1 -->
+        <div id="p1" class="paper">
+            <div class="front">
+                <div id="f1" class="front-content">
+                    <h1 class="book-title">First Page</h1>
+                   <!--  <img class="cover-img" src="./dog.jpg" alt="dog"> -->
+                </div>
+            </div>
+            <div class="back">
+                <div id="b1" class="back-content">
+                    <h2>Some Intro</h2>
+                    <div class="content">
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Paper 2 -->
+        <div id="p2" class="paper">
+            <div class="front">
+                <div id="f2" class="front-content">
+                    <h1>Second Cool Page</h1>
+                </div>
+            </div>
+            <div class="back">
+                <div id="b2" class="back-content">
+                    <h1>An Awesome Page</h1>
+                </div>
+            </div>
+        </div>
+        <!-- Paper 3 -->
+        <div id="p3" class="paper">
+            <div class="front">
+                <div id="f3" class="front-content">
+                    <h1>An Amazing third Page</h1>
+                </div>
+            </div>
+            <div class="back">
+                <div id="b3" class="back-content">
+                    <h1>The Good Bye</h1>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="container">
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-    </div>
-    <script>
-      var numSquares = 6;
-      var colors = [];
-      var pickedColor;
-      var squares = document.querySelectorAll(".square");
-      var colorDisplay = document.getElementById("colorDisplay");
-      var messageDisplay = document.querySelector("#message");
-      var h1 = document.querySelector("h1");
-      var resetButton = document.querySelector("#reset");
-      var modeButtons = document.querySelectorAll(".mode");
+    <button id="next-btn">
+        <i class="fas fa-arrow-circle-right"></i>
+    </button>
 
-      init();
 
-      function init() {
-        setupModeButtons();
-        setupSquares();
-        reset();
-      }
+<script>
+// References to DOM elements
+const prevBtn = document.querySelector('#prev-btn');
+const nextBtn = document.querySelector('#next-btn');
+const book = document.querySelector('#book');
 
-      function setupModeButtons() {
-        for (var i = 0; i < modeButtons.length; i++) {
-          modeButtons[i].addEventListener("click", function () {
-            modeButtons[0].classList.remove("selected");
-            modeButtons[1].classList.remove("selected");
-            this.classList.add("selected");
-            this.textContent === "Easy" ? (numSquares = 3) : (numSquares = 6);
-            reset();
-          });
+const paper1 = document.querySelector('#p1')
+const paper2 = document.querySelector('#p2')
+const paper3 = document.querySelector('#p3')
+
+// Event listeners
+prevBtn.addEventListener("click", goPrevious);
+nextBtn.addEventListener("click", goNext);
+
+// Business Logic
+let currentState = 1;
+let numOfPapers = 3;
+let maxState = numOfPapers + 1;
+
+
+function openBook() {
+    book.style.transform = "translateX(50%)";
+    prevBtn.style.transform = "translateX(-180px)";
+    nextBtn.style.transform = "translateX(180px)";
+}
+
+function closeBook(isFirstPage) {
+    if(isFirstPage) {
+        book.style.transform = "translateX(0%)";
+    } else {
+        book.style.transform = "translateX(100%)";
+    }
+    prevBtn.style.transform = "translateX(0px)";
+    nextBtn.style.transform = "translateX(0px)";
+}
+
+function goNext() {
+    if(currentState < maxState) { 
+        switch(currentState) {
+            case 1:
+                openBook();
+                paper1.classList.add("flipped");
+                paper1.style.zIndex = 1;
+                break;
+            case 2:
+                paper2.classList.add("flipped");
+                paper2.style.zIndex = 2;
+                break;
+            case 3:
+                closeBook(false);
+                paper3.classList.add("flipped");
+                paper3.style.zIndex = 3;
+                break;
+            default: 
+                throw new Error("unkown state");    
         }
-      }
 
-      function setupSquares() {
-        for (var i = 0; i < squares.length; i++) {
-          //add click listeners to squares
-          squares[i].addEventListener("click", function () {
-            //grab color of clicked square
-            var clickedColor = this.style.background;
-            //compare color to pickedColor
-            if (clickedColor === pickedColor) {
-              messageDisplay.textContent = "Correct!";
-              resetButton.textContent = "Play Again?";
-              changeColors(clickedColor);
-              h1.style.background = clickedColor;
-            } else {
-              this.style.background = "#232323";
-              messageDisplay.textContent = "Try Again";
-            }
-          });
+        currentState++;
+    }
+}
+
+function goPrevious() {
+    if(currentState > 1) {
+        switch(currentState) {
+            case 2:
+                closeBook(true);
+                paper1.classList.remove("flipped");
+                paper1.style.zIndex = 3;
+                break;
+            case 3:
+                paper2.classList.remove("flipped");
+                paper2.style.zIndex = 2;
+                break;
+            case 4: 
+                openBook()
+                paper3.classList.remove("flipped");
+                paper3.style.zIndex = 1;
+                break;
         }
-      }
 
-      function reset() {
-        colors = generateRandomColors(numSquares);
-        //pick a new random color from array
-        pickedColor = pickColor();
-        //change colorDisplay to match picked Color
-        colorDisplay.textContent = pickedColor;
-        resetButton.textContent = "New Colors";
-        messageDisplay.textContent = "";
-        //change colors of squares
-        for (var i = 0; i < squares.length; i++) {
-          if (colors[i]) {
-            squares[i].style.display = "block";
-            squares[i].style.background = colors[i];
-          } else {
-            squares[i].style.display = "none";
-          }
-        }
-        h1.style.background = "steelblue";
-      }
-
-      resetButton.addEventListener("click", function () {
-        reset();
-      });
-
-      function changeColors(color) {
-        //loop through all squares
-        for (var i = 0; i < squares.length; i++) {
-          //change each color to match given color
-          squares[i].style.background = color;
-        }
-      }
-
-      function pickColor() {
-        var random = Math.floor(Math.random() * colors.length);
-        return colors[random];
-      }
-
-      function generateRandomColors(num) {
-        //make an array
-        var arr = [];
-        //repeat num times
-        for (var i = 0; i < num; i++) {
-          //get random color and push into arr
-          arr.push(randomColor());
-        }
-        //return that array
-        return arr;
-      }
-
-      function randomColor() {
-        //pick a "red" from 0 - 255
-        var r = Math.floor(Math.random() * 256);
-        //pick a "green" from  0 -255
-        var g = Math.floor(Math.random() * 256);
-        //pick a "blue" from  0 -255
-        var b = Math.floor(Math.random() * 256);
-        return "rgb(" + r + ", " + g + ", " + b + ")";
-      }
-    </script>
-  </body>
+        currentState--;
+    }
+}   
+</script>
+</body>
 </html>
