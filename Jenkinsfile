@@ -30,15 +30,15 @@ pipeline {
                     sh("git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/argocd.git HEAD:main")
                     sh("git checkout main")
                     sh("""
-                      echo 'apiVersion: kustomize.config.k8s.io/v1beta1
+                      echo 'apiVersion: kustomization.config.k8s.io/v1beta1
                         kind: Kustomization
                         resources:
                             - nginx.yml
                         images:
                             - name: ANIS-NGINX
-                        newName: devops2022.azurecr.io/nginxanis:${GIT_COMMIT}' > anis-argocd/kustomize.yaml
+                        newName: devops2022.azurecr.io/nginxanis:${GIT_COMMIT}' > anis-argocd/kustomization.yaml
                     """)                    
-                    sh("git add anis-argocd/kustomize.yaml")
+                    sh("git add anis-argocd/kustomization.yaml")
                     sh("git commit -m 'kustom [skip ci]'")
                     sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/argocd.git HEAD:main")
                 }
