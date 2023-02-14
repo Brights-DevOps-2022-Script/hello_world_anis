@@ -33,9 +33,9 @@ pipeline {
                       echo 'apiVersion: kustomization.config.k8s.io/v1beta1
                         kind: Kustomization
                         resources:
-                            - nginx.yml
+                        - nginx.yml
                         images:
-                            - name: ANIS-NGINX
+                        - name: ANIS-NGINX
                         newName: devops2022.azurecr.io/nginxanis:${GIT_COMMIT}' > anis-argocd/kustomization.yaml
                     """)                    
                     sh("git add anis-argocd/kustomization.yaml")
