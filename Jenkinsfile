@@ -37,9 +37,8 @@ pipeline {
                         images:
                             - name: ANIS-NGINX
                         newName: devops2022.azurecr.io/nginxanis:${GIT_COMMIT}' > anis-argocd/kustomize.yaml
-                    """)
-                    
-                    sh("git add argocd/kustomize.yaml")
+                    """)                    
+                    sh("git add anis-argocd/kustomize.yaml")
                     sh("git commit -m 'kustom [skip ci]'")
                     sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/argocd.git HEAD:main")
                 }
