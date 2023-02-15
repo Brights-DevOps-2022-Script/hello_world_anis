@@ -596,10 +596,10 @@
       }
 
       /*-----------------------------------*\
-#CHAPTERS
+#KapitelS
 \*-----------------------------------*/
 
-      .chapter-card {
+      .Kapitel-card {
         height: 100%;
         background-color: var(--white);
         padding: 25px;
@@ -611,11 +611,11 @@
         overflow: scroll;
       }
 
-      .chapter-card:is(:hover, :focus-within) {
+      .Kapitel-card:is(:hover, :focus-within) {
         transform: translateY(-10px);
       }
 
-      .chapter-card .card-title {
+      .Kapitel-card .card-title {
         margin-block-end: 15px;
       }
 
@@ -1059,10 +1059,10 @@
         }
 
         /**
- * CHAPTERS, PRICING
+ * KapitelS, PRICING
  */
 
-        :is(.chapters, .pricing) .grid-list li:last-child {
+        :is(.Kapitels, .pricing) .grid-list li:last-child {
           grid-column: 1 / 3;
           max-width: calc(50% - 12.5px);
           width: 100%;
@@ -1175,10 +1175,10 @@
         }
 
         /**
- * CHAPTER, PRICING
+ * Kapitel, PRICING
  */
 
-        :is(.chapters, .pricing) .grid-list li:last-child {
+        :is(.Kapitels, .pricing) .grid-list li:last-child {
           all: unset;
         }
 
@@ -1351,11 +1351,11 @@
             </li>
 
             <li class="navbar-item">
-              <a href="#chapters" class="navbar-link" data-nav-link>Chapters</a>
+              <a href="#Kapitels" class="navbar-link" data-nav-link>Kapitels</a>
             </li>
 
             <li class="navbar-item">
-              <a href="#aboutUs" class="navbar-link" data-nav-link>About us</a>
+              <a href="#aboutUs" class="navbar-link" data-nav-link>Über uns</a>
             </li>
 
             <li class="navbar-item">
@@ -1367,7 +1367,7 @@
           </li> -->
 
             <li class="navbar-item">
-              <a href="#contact" class="navbar-link" data-nav-link>Contact</a>
+              <a href="#contact" class="navbar-link" data-nav-link>Kontakt</a>
             </li>
           </ul>
         </nav>
@@ -1415,7 +1415,7 @@
 
             <div class="hero-banner has-before">
               <img
-                src="./assets/images/hero-banner.png"
+                src="./assets/images/devopslogo.png.png"
                 width="431"
                 height="596"
                 alt="things i never said, a novel by claudia wilson"
@@ -1435,14 +1435,21 @@
 
         <section class="section benefits" id="benefits" aria-label="benefits">
           <div class="container">
+<!--             <img
+                      src="https://theisozone.com/wp-content/uploads/2020/08/DevOps-1024x608.jpg"
+                      width="100%"
+                      height="100px"
+                      loading="lazy"
+                      alt="Docker"
+                    /> -->
             <div class="grid-list">
               <li class="benefits-content">
                 <h2 class="h2 section-title">
-                  What you'll achieve by this book
+                  Was Sie mit diesem Buch erreichen
                 </h2>
 
                 <p class="section-text">
-                  Lorem ipsum dolor sit amet, consectetuer laoreet dolore magna.
+                  Durch die Lektüre dieses Buches lernen Sie die Grundlagen der Devops kennen.
                 </p>
               </li>
 
@@ -1450,15 +1457,15 @@
                 <div class="benefits-card has-before has-after">
                   <div class="card-icon">
                     <img
-                      src="./assets/images/benefits-1.svg"
+                      src="https://w7.pngwing.com/pngs/475/563/png-transparent-docker-software-deployment-industrial-design-docker-logo-microsoft-azure-industrial-design-thumbnail.png"
                       width="40"
                       height="40"
                       loading="lazy"
-                      alt="Experience"
+                      alt="Docker"
                     />
                   </div>
 
-                  <h3 class="h3 card-title">Experience</h3>
+                  <h3 class="h3 card-title">PLAN</h3>
 
                   <p class="card-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -1488,7 +1495,7 @@
                     />
                   </div>
 
-                  <h3 class="h3 card-title">Motivation</h3>
+                  <h3 class="h3 card-title">BUILD</h3>
 
                   <p class="card-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -1518,7 +1525,7 @@
                     />
                   </div>
 
-                  <h3 class="h3 card-title">Goals</h3>
+                  <h3 class="h3 card-title">CONTINUOUS INTEGRATION</h3>
 
                   <p class="card-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -1548,7 +1555,7 @@
                     />
                   </div>
 
-                  <h3 class="h3 card-title">Vision</h3>
+                  <h3 class="h3 card-title">Monitor</h3>
 
                   <p class="card-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -1578,7 +1585,7 @@
                     />
                   </div>
 
-                  <h3 class="h3 card-title">Mission</h3>
+                  <h3 class="h3 card-title">CONTINIOUS INTEGRATION</h3>
 
                   <p class="card-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -1608,7 +1615,7 @@
                     />
                   </div>
 
-                  <h3 class="h3 card-title">Strategy</h3>
+                  <h3 class="h3 card-title">DEPLOY</h3>
 
                   <p class="card-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -1630,23 +1637,23 @@
         </section>
 
         <!-- 
-        - #CHAPTERS
+        - #KapitelS
       -->
 
-        <section class="section chapters" id="chapters">
+        <section class="section Kapitels" id="Kapitels">
           <div class="container">
-            <p class="section-subtitle">Chapters</p>
+            <p class="section-subtitle">Kapitels</p>
 
             <h2 class="h2 section-title has-underline">
-              Chapters we've covered
+              Kapitel ihrer Wahl
               <span class="span has-before"></span>
             </h2>
 
-            <ul id="chapter-ul" class="grid-list">
-              <!-- < id="chapter-ul"  class="grid-list"> -->
+            <ul id="Kapitel-ul" >
+              <!-- < id="Kapitel-ul"  class="grid-list"> -->
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 01</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 01</p>
 
                   <h3 class="h3 card-title">OPS</h3>
 
@@ -1947,8 +1954,8 @@
               </li>
 
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 02</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 02</p>
 
                   <h3 class="h3 card-title">Trelloboard</h3>
 
@@ -1996,8 +2003,8 @@
               </li>
 
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 03</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 03</p>
 
                   <h3 class="h3 card-title">Einführung in agiles Arbeiten</h3>
 
@@ -2182,8 +2189,8 @@
               </li>
 
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 04</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 04</p>
 
                   <h3 class="h3 card-title">scrum</h3>
 
@@ -2241,8 +2248,8 @@
               </li>
 
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 05</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 05</p>
 
                   <h3 class="h3 card-title">xp extrme programming</h3>
 
@@ -2404,8 +2411,8 @@
               </li>
 
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 06</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 06</p>
 
                   <h3 class="h3 card-title">GitLab</h3>
 
@@ -2439,8 +2446,8 @@
               </li>
 
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 07</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 07</p>
 
                   <h3 class="h3 card-title">JenPipeline</h3>
 
@@ -2556,8 +2563,8 @@
               </li>
 
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 08</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 08</p>
 
                   <h3 class="h3 card-title">jenkins</h3>
 
@@ -2634,8 +2641,8 @@
               </li>
 
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 09</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 09</p>
 
                   <h3 class="h3 card-title">pipelines</h3>
 
@@ -2736,8 +2743,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 09</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 09</p>
 
                   <h3 class="h3 card-title">pipelines</h3>
 
@@ -2838,8 +2845,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 10</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 10</p>
 
                   <h3 class="h3 card-title">DockerHafen</h3>
 
@@ -2869,8 +2876,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 11</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 11</p>
 
                   <h3 class="h3 card-title">Kubernetes</h3>
 
@@ -2922,8 +2929,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 12</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 12</p>
 
                   <h3 class="h3 card-title">Docker</h3>
 
@@ -2976,8 +2983,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 13</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 13</p>
 
                   <h3 class="h3 card-title">Network Ports</h3>
 
@@ -2989,8 +2996,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 14</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 14</p>
 
                   <h3 class="h3 card-title">Webhooks</h3>
 
@@ -3027,8 +3034,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 15</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 15</p>
 
                   <h3 class="h3 card-title">Network_Adressen</h3>
 
@@ -3054,8 +3061,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 16</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 16</p>
 
                   <h3 class="h3 card-title">Bash</h3>
 
@@ -3083,8 +3090,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 17</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 17</p>
 
                   <h3 class="h3 card-title">CleanCoding</h3>
 
@@ -3094,8 +3101,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 18</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 18</p>
 
                   <h3 class="h3 card-title">Funktionen</h3>
 
@@ -3111,8 +3118,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 19</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 19</p>
 
                   <h3 class="h3 card-title">ObjektorientiertesProgrammieren</h3>
 
@@ -3128,8 +3135,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 20</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 20</p>
 
                   <h3 class="h3 card-title">Die Setzerei des DevOps-Comicbook-Verlags</h3>
 
@@ -3176,8 +3183,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 21</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 21</p>
 
                   <h3 class="h3 card-title">Scope</h3>
 
@@ -3190,8 +3197,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 23</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 23</p>
 
                   <h3 class="h3 card-title">git</h3>
 
@@ -3224,8 +3231,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 24</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 24</p>
 
                   <h3 class="h3 card-title">GitHub</h3>
 
@@ -3235,8 +3242,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 25</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 25</p>
 
                   <h3 class="h3 card-title">MergeKonflikt</h3>
 
@@ -3248,8 +3255,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 25</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 25</p>
 
                   <h3 class="h3 card-title">MergeKonflikt</h3>
 
@@ -3261,8 +3268,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 26</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 26</p>
 
                   <h3 class="h3 card-title">Reddit</h3>
 
@@ -3272,8 +3279,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 27</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 27</p>
 
                   <h3 class="h3 card-title">Stackoverflow</h3>
 
@@ -3283,8 +3290,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 28</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 28</p>
 
                   <h3 class="h3 card-title">Behavior-Driven-Development</h3>
 
@@ -3303,8 +3310,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 29</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 29</p>
 
                   <h3 class="h3 card-title">GPGkeys</h3>
 
@@ -3314,8 +3321,8 @@
                 </div>
               </li>
               <li>
-                <div class="chapter-card">
-                  <p class="card-subtitle">Chapter 30</p>
+                <div class="Kapitel-card">
+                  <p class="card-subtitle">Kapitel 30</p>
 
                   <h3 class="h3 card-title">Glossar</h3>
 
@@ -3350,24 +3357,24 @@
 
         <section class="section preview" aria-label="preview">
           <div class="container">
-            <p class="section-subtitle">Chapter Preview</p>
+            <p class="section-subtitle">KAPITELVORSCHAU</p>
 
             <h2 class="h2 section-title has-underline">
-              Read some chapter
+              Lesen Sie ein Kapitel
               <span class="span has-before"></span>
             </h2>
 
             <ul class="tab-list">
               <li>
                 <div class="tab-card active" data-tab-card>
-                  <h3 class="h3 tab-text">Chapter 1</h3>
+                  <h3 class="h3 tab-text">Kapitel 5</h3>
 
                   <img
-                    src="./assets/images/preview-1.png"
+                    src="./assets/images/kapital5.png"
                     width="820"
                     height="630"
                     loading="lazy"
-                    alt="Chapter 1"
+                    alt="Kapitel 1"
                     class="w-100"
                   />
                 </div>
@@ -3375,14 +3382,14 @@
 
               <li>
                 <div class="tab-card" data-tab-card>
-                  <h3 class="h3 tab-text">Chapter 2</h3>
+                  <h3 class="h3 tab-text">Kapitel 21</h3>
 
                   <img
-                    src="./assets/images/preview-2.png"
+                    src="./assets/images/kapital21.png"
                     width="820"
                     height="630"
                     loading="lazy"
-                    alt="Chapter 2"
+                    alt="Kapitel 2"
                     class="w-100"
                   />
                 </div>
@@ -3390,14 +3397,29 @@
 
               <li>
                 <div class="tab-card" data-tab-card>
-                  <h3 class="h3 tab-text">Chapter 3</h3>
+                  <h3 class="h3 tab-text">Kapitel 23</h3>
 
                   <img
-                    src="./assets/images/preview-3.png"
+                    src="./assets/images/kapital23.png"
                     width="820"
                     height="630"
                     loading="lazy"
-                    alt="Chapter 3"
+                    alt="Kapitel 3"
+                    class="w-100"Chapter
+                  />
+                </div>
+              </li>
+
+              <li>
+                <div class="tab-card" data-tab-card>
+                  <h3 class="h3 tab-text">Kapitel 26</h3>
+
+                  <img
+                    src="./assets/images/kapital26.png"
+                    width="820"
+                    height="630"
+                    loading="lazy"
+                    alt="Kapitel 4"
                     class="w-100"
                   />
                 </div>
@@ -3405,29 +3427,14 @@
 
               <li>
                 <div class="tab-card" data-tab-card>
-                  <h3 class="h3 tab-text">Chapter 4</h3>
+                  <h3 class="h3 tab-text">Kapital 29</h3>
 
                   <img
-                    src="./assets/images/preview-4.png"
+                    src="./assets/images/kapital29.png"
                     width="820"
                     height="630"
                     loading="lazy"
-                    alt="Chapter 4"
-                    class="w-100"
-                  />
-                </div>
-              </li>
-
-              <li>
-                <div class="tab-card" data-tab-card>
-                  <h3 class="h3 tab-text">Chapter 5</h3>
-
-                  <img
-                    src="./assets/images/preview-5.png"
-                    width="820"
-                    height="630"
-                    loading="lazy"
-                    alt="Chapter 5"
+                    alt="Kapitel 5"
                     class="w-100"
                   />
                 </div>
@@ -3442,23 +3449,23 @@
 
         <section class="section pricing" id="pricing" aria-label="pricing">
           <div class="container">
-            <p class="section-subtitle">Pricing</p>
+            <p class="section-subtitle">Preis</p>
 
             <h2 class="h2 section-title has-underline">
-              Pricing based on their version
+              Die Preise basieren auf ihrer Version
               <span class="span has-before"></span>
             </h2>
 
             <ul class="grid-list">
               <li>
                 <div class="pricing-card">
-                  <h3 class="h3 card-title">E-Book</h3>
+                  <h3 class="h3 card-title">E-Buch</h3>
 
                   <data class="price" value="5">€5</data>
 
                   <ul class="pricing-card-list">
                     <li class="card-item">
-                      <p class="card-text">Complete Book</p>
+                      <p class="card-text">Komplettes Buch</p>
                     </li>
 
                     <li class="card-item">
@@ -3466,27 +3473,27 @@
                     </li>
 
                     <li class="card-item">
-                      <p class="card-text">Hardcover Book</p>
+                      <p class="card-text">Gebundenes Buch</p>
                     </li>
 
                     <li class="card-item">
-                      <p class="card-text">Access to Downloads</p>
+                      <p class="card-text">Zugriff auf Downloads</p>
                     </li>
                   </ul>
 
-                  <button class="btn btn-secondary">BUY NOW</button>
+                  <button class="btn btn-secondary">KAUFE JETZT</button>
                 </div>
               </li>
 
               <li>
                 <div class="pricing-card bundle">
-                  <h3 class="h3 card-title">Bundle</h3>
+                  <h3 class="h3 card-title">Bündeln</h3>
 
                   <data class="price" value="15">€15</data>
 
                   <ul class="pricing-card-list">
                     <li class="card-item">
-                      <p class="card-text">Complete Book</p>
+                      <p class="card-text">Komplettes Buch</p>
                     </li>
 
                     <li class="card-item">
@@ -3494,27 +3501,27 @@
                     </li>
 
                     <li class="card-item">
-                      <p class="card-text">Hardcover Book</p>
+                      <p class="card-text">Gebundenes Buch</p>
                     </li>
 
                     <li class="card-item">
-                      <p class="card-text">Access to Downloads</p>
+                      <p class="card-text">Zugriff auf Downloads</p>
                     </li>
                   </ul>
 
-                  <button class="btn btn-primary">BUY NOW</button>
+                  <button class="btn btn-primary">KAUFE JETZT</button>
                 </div>
               </li>
 
               <li>
                 <div class="pricing-card">
-                  <h3 class="h3 card-title">Hardcover</h3>
+                  <h3 class="h3 card-title">Gebundenes Buch</h3>
 
                   <data class="price" value="10">€10</data>
 
                   <ul class="pricing-card-list">
                     <li class="card-item">
-                      <p class="card-text">Complete Book</p>
+                      <p class="card-text">Komplettes Buch</p>
                     </li>
 
                     <li class="card-item">
@@ -3522,15 +3529,15 @@
                     </li>
 
                     <li class="card-item">
-                      <p class="card-text">Hardcover Book</p>
+                      <p class="card-text">Gebundenes Buch</p>
                     </li>
 
                     <li class="card-item">
-                      <p class="card-text">Access to Downloads</p>
+                      <p class="card-text">Zugriff auf Downloads</p>
                     </li>
                   </ul>
 
-                  <button class="btn btn-secondary">BUY NOW</button>
+                  <button class="btn btn-secondary">KAUFE JETZT</button>
                 </div>
               </li>
             </ul>
@@ -3558,7 +3565,7 @@
             </figure>
 
             <div class="author-content">
-              <p class="section-subtitle">The Author</p>
+              <p class="section-subtitle">DER AUTOR</p>
 
               <h2 class="h2 section-title">Jörg Miethe</h2>
 
@@ -3593,7 +3600,7 @@
             </figure>
 
             <div class="author-content">
-              <p class="section-subtitle">The Author</p>
+              <p class="section-subtitle">DER AUTOR</p>
 
               <h2 class="h2 section-title">Felix Strauß</h2>
 
@@ -3854,10 +3861,10 @@
 
         <section class="section contact" id="contact" aria-label="contact">
           <div class="container">
-            <p class="section-subtitle">Contact</p>
+            <p class="section-subtitle">KONTAKT</p>
 
             <h2 class="h2 section-title has-underline">
-              Write us anything
+              Schreiben Sie uns etwas
               <span class="span has-before"></span>
             </h2>
 
@@ -3866,7 +3873,7 @@
                 <input
                   type="text"
                   name="name"
-                  placeholder="Your Name"
+                  placeholder="Ihren Namen"
                   required
                   class="input-field"
                 />
@@ -3874,7 +3881,7 @@
                 <input
                   type="email"
                   name="email_address"
-                  placeholder="Your Email"
+                  placeholder="Ihre E-Mail-Adresse"
                   required
                   class="input-field"
                 />
@@ -3882,18 +3889,18 @@
                 <input
                   type="text"
                   name="subject"
-                  placeholder="Subject"
+                  placeholder="Thema"
                   required
                   class="input-field"
                 />
 
                 <textarea
                   name="message"
-                  placeholder="Your Message"
+                  placeholder="Ihre Nachricht"
                   class="input-field"
                 ></textarea>
 
-                <button type="submit" class="btn btn-primary">Send Now</button>
+                <button type="submit" class="btn btn-primary">jetzt senden</button>
               </form>
 
               <ul class="contact-card">
@@ -3921,7 +3928,7 @@
                 </li>
 
                 <li>
-                  <p class="social-list-title h3">Connect book socials</p>
+                  <p class="social-list-title h3">Verbinden Sie Buch-Socials</p>
 
                   <ul class="social-list">
                     <li>
@@ -3981,7 +3988,7 @@
             </li>
 
             <li>
-              <a href="#" class="footer-link">Chapters</a>
+              <a href="#" class="footer-link">Kapitels</a>
             </li>
 
             <li>
@@ -4094,7 +4101,7 @@
         let points = document.getElementById("points");
         let showMoreText = document.getElementById("moreText");
         /*   let buttonText = document.getElementById("textButton"); */
-        /* var classStyle = document.getElementById("chapter-ul"); */
+        /* var classStyle = document.getElementById("Kapitel-ul"); */
 
         if (points.style.display === "none") {
           showMoreText.style.display = "none";
@@ -4106,7 +4113,7 @@
           showMoreText.style.display = "inline";
           points.style.display = "none";
           buttonText.innerHTML = "Show Less";
-          /* classStyle.classList.add( "chapter-ul");; */
+          /* classStyle.classList.add( "Kapitel-ul");; */
         }
       };
       addEventOnelem(buttonText, "click", toggleText);
