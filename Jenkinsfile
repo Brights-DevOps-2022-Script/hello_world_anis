@@ -4,16 +4,16 @@ pipeline {
         stage('BUILD') {
             steps {
                 withDockerRegistry(credentialsId: 'acr_creds', url: 'https://devops2022.azurecr.io/v2/') {
-                sh "docker build -t devops2022.azurecr.io/nginxanisbook:$GIT_COMMIT ."
-                sh "docker push devops2022.azurecr.io/nginxanisbook:$GIT_COMMIT"
-                sh "docker rmi devops2022.azurecr.io/nginxanisbook:$GIT_COMMIT"
+                sh "docker build -t devops2022.azurecr.io/anisbook:$GIT_COMMIT ."
+                sh "docker push devops2022.azurecr.io/anisbook:$GIT_COMMIT"
+                sh "docker rmi devops2022.azurecr.io/anisbook:$GIT_COMMIT"
                 }
             }
         }
         stage('TEST') {
             steps {
                  script {
-                    def imageTag = "nginxanisbook:$GIT_COMMIT"
+                    def imageTag = "anisbook:$GIT_COMMIT"
                     def acrLoginServer = "devops2022.azurecr.io"
                     def imageExists = sh(script: "set +x curl -fL ${acrLoginServer}/v2/manifests/${imageTag}", returnStatus: true) == 0
                     if (!imageExists) {
@@ -27,8 +27,8 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '2eb747c4-f19f-4601-ab83-359462e62482',  url: 'https://github.com/Brights-DevOps-2022-Script/argocd.git']]])
                 withCredentials([usernamePassword(credentialsId: '2eb747c4-f19f-4601-ab83-359462e62482', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) 
                 {
-                    sh "sed -i 's|image:.*|image: devops2022.azurecr.io/nginxanisbook:${GIT_COMMIT}|' anis-argocd/nginx.yml"
-                    sh("git add anis-argocd/nginx.yml")
+                    sh "sed -i 's|image:.*|image: devops2022.azurecr.io/nginxanisbook:${GIT_COMMIT}|' anis-argocd/deployment.yml"
+                    sh("git add anis-argocd/deployment.yml")
                     sh("git commit -m 'update image'")
                     sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/argocd.git HEAD:main")                    
                 }
